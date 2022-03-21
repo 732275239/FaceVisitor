@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>共享擦鞋首页</title>
+
+
+</head>
+<body>
+
+<h1>我是新窗口</h1>
+<br/><br/>
+<button onclick="closeMy()">关闭窗口</button>
+<br/><br/>
+<button onclick="closeMy2()">关闭并刷新上级</button>
+<br/><br/>
+<button onclick="closeMy3()">关闭并传参数</button>
+<br/><br/>
+<button onclick="closeMy4()">回到首页窗口</button>
+<br/><br/>
+<br/></br>
+
+
+<button onclick="javaScript:qr.openWin('/test.html','新窗口')">打开新窗口</button>
+<br/><br/>
+</body>
+<script>
+
+
+function closeMy(){
+    //qr.backMain();
+    qr.closeWin();
+}
+function closeMy2(){
+    qr.closeWin(true);
+}
+function closeMy3(){
+    qr.closeWin("huidiao('1','我是参数1','我是参数2','我是参数N')")
+}
+function closeMy4(){
+    qr.backMain()
+}
+function huidiao(id,p1,p2,pn){
+    qr.tips("ID:"+id+" 参数1:"+p1+" 参数2:"+p2+" 参数N:"+pn);
+}
+</script>
+
+</html>

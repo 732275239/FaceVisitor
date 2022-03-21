@@ -1,0 +1,27 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.objectboxVersion = '2.2.0'
+    repositories {
+        jcenter()
+        maven {url 'https://dl.google.com/dl/android/maven2/'}
+        maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+        classpath 'com.antfortune.freeline:gradle:0.8.7'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {url 'https://dl.google.com/dl/android/maven2/'}
+        maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

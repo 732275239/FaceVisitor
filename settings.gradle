@@ -1,0 +1,2 @@
+include ':detectlib'
+include ':app'

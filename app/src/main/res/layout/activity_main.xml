@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch">
+
+    <com.bifan.detectlib.FaceDetectView
+        android:id="@+id/faceDetectView"
+        style="@style/MatchMatch"
+        android:background="@color/black"
+        android:layout_centerInParent="true" />
+
+    <View
+        style="@style/MatchMatch"
+        android:background="@drawable/workbench_btn_cancel_background_normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@drawable/workbench_ic_digital_clock_indicator" />
+
+    <LinearLayout
+        style="@style/WrapWrap.Vertical"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="60dp">
+
+        <TextClock
+            android:id="@+id/time"
+            style="@style/WrapWrap"
+            android:format12Hour="HH:mm:ss"
+            android:format24Hour="HH:mm:ss"
+            android:textColor="#A8EDF8"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextClock
+            style="@style/WrapWrap"
+            android:layout_marginTop="10dp"
+            android:format12Hour="yyyy/MM/dd E"
+            android:format24Hour="yyyy/MM/dd E"
+            android:textColor="#A8EDF8"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/workbench_btn_cancel_background_normal"
+        android:padding="10dp"
+        android:text="请正视屏幕"
+        android:textColor="#A8EDF8"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/adminbt"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <RelativeLayout
+        android:id="@+id/facelayout"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/imgbg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/workbench_authenticate_image_success_background" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/faceimg"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_centerInParent="true"
+            app:civ_border_width="0dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/adminLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/workbench_background_bottom_elves"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/workbench_presentation_panel_background" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:background="@drawable/workbench_ic_digital_clock_indicator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="楚誉魔方管理员登录"
+            android:textColor="#35EBEF"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingTop="38dp"
+            android:paddingRight="25dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/loginlog" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/pass"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/workbench_presentation_panel_background"
+                    android:gravity="center_vertical"
+                    android:inputType="numberPassword"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="15dp"
+                    android:textColor="#07F1F6"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/cancel"
+                        android:layout_width="95dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/button_icon_selected"
+                        android:text="取消"
+                        android:textColor="#6EEEFE"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/login"
+                        android:layout_width="95dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/button_icon_selected"
+                        android:text="登录"
+                        android:textColor="#6EEEFE"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

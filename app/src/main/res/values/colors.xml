@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="app_theme">#026FFE</color>
+    <color name="app_theme_dark">#EA091D</color>
+
+    <color name="sr_window_background">#FFFEFEFE</color>
+    <color name="text_color_snow_white">#FFFFFF</color>
+    <color name="custom_pressed">#E4E4E4</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="navigation_bar_main_bg">#FFFFFF</color>
+    <color name="navigation_bar_main_tv">#909090</color>
+    <color name="navigation_bar_tex_tv">#F45423</color>
+    <color name="white">#ffffffff</color>
+    <color name="loading_gray">#ffBEBEBE</color>
+    <color name="gray">#ff999999</color>
+    <color name="gray1">#ff333333</color>
+    <color name="gray2">#F5F5F5</color>
+    <color name="gray3">#55999999</color>
+    <color name="bggray">#E9E9E9</color>
+    <color name="more">#333333</color>
+    <color name="D9">#D9D9D9</color>
+    <color name="paytext">#ffb9b5b9</color>
+    <color name="Layoutbg">#F1F1F1</color>
+    <color name="F2F2F2">#F2F2F2</color>
+    <color name="gold">#C39869</color>
+
+    <color name="shoe_main_text_color">#666666</color>
+    <color name="shoe_sub_text_color">#ababab</color>
+
+    <color name="blue">#00ACEE</color>
+
+
+    <!-- 提示 -->
+    <color name="common_tips_bg">#B2000000</color>
+
+    <!-- 间隔的布局的颜色 -->
+    <color name="spacing_bg">#f3f3f3</color>
+    <color name="spacing_bg1">#eeeeee</color>
+    <!-- 最浅灰色颜色 -->
+    <color name="noblack_bg">#f8f8f8</color>
+    <color name="noblack_bg1">#fafafa</color>
+    <!-- 黑色用这个代替 -->
+    <color name="black_color">#333333</color>
+
+    <color name="black">#000000</color>
+    <!-- 导航条，普通的灰色 -->
+    <color name="common_color">#666666</color>
+    <!-- 导航条，普通的灰色 -->
+    <color name="common_color1">#7b7b7b</color>
+    <!-- 比灰色浅一点 -->
+    <color name="littlebalck_color">#999999</color>
+    <color name="smallbalck_color">#e1e1e1</color>
+    <color name="smallbalck_color2">#cbcbcb</color>
+    <color name="smallbalck_color3">#bcb9b9</color>
+    <!-- 所有背景灰色 -->
+    <color name="all_bgcolor">#F8F8F8</color>
+    <color name="enter_app_btn_color">#ffFF7032</color>
+
+    <color name="button_bcg_cover_for_light">#22000000</color>
+    <color name="radius_line">#D2D2D2</color>
+    <!--紫色-->
+    <color name="purple">#A51BE9</color>
+    <!--蓝色-->
+    <color name="bule">#17A1FD</color>
+    <!-- 比黑色稍浅 -->
+    <color name="littleblack_color2">#464646</color>
+
+    <color name="base_msg_color">#ff999999</color>
+    <!--<color name="gplus_color_1">@color/orange_low</color>-->
+    <!--<color name="gplus_color_2">@color/orange</color>-->
+    <color name="gplus_color_3">@color/app_theme</color>
+    <color name="gplus_color_4">@color/app_theme_dark</color>
+    <integer-array name="gplus_colors">
+        <!--<item>@color/gplus_color_1</item>-->
+        <!--<item>@color/gplus_color_2</item>-->
+        <item>@color/gplus_color_3</item>
+        <item>@color/gplus_color_4</item>
+    </integer-array>
+
+    <color name="material_red">#ffF44336</color>
+    <color name="material_green">#ff4CAF50</color>
+    <color name="material_blue">#ff03A9F4</color>
+    <color name="material_yellow">#ffFFEB3B</color>
+
+
+
+    <!--ali color-->
+
+    <color name="alivc_white">#e7e7e7</color>
+    <color name="alivc_blue">#379DF2</color>
+    <color name="alivc_green">#57AB44</color>
+    <color name="alivc_orange">#EE7C33</color>
+    <color name="alivc_red">#E94033</color>
+    <color name="tranwhite">#60FFFFFF</color>
+
+    <color name="alivc_info_text_duration">#9f9e9e</color>
+    <color name="alivc_dialog_error_bg">#b2333333</color>
+    <color name="alivc_dialog_gesture_bg">#66ffffff</color>
+    <color name="alivc_gesture_text_color">#333333</color>
+
+    <color name="alivc_color_rate_item">#4c000000</color>
+
+    <color name="alivc_color_player_setting_background">#1e222d</color>
+    <color name="alivc_color_player_tab_selected">#00FFFF</color>
+    <color name="alivc_color_player_tab_defaut">#D8D8D8</color>
+
+    <color name="alivc_color_player_background">#1e222d</color>
+    <color name="alivc_color_player_colorPrimary">#00FFFF</color>
+    <color name="alivc_color_player_colorAccent">#00c1de</color>
+    <color name="alivc_color_player_clear_logs">#373d41</color>
+    <color name="alivc_color_player_manager_background">#373d41</color>
+    <color name="alivc_color_player_setting">#373d41</color>
+
+    <color name="colorPrimary">#1e222d</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimary_alpha_five">#1affffff</color>
+    <color name="colorPrimary_alpha_ten">#0cffffff</color>
+    <color name="colorPrimary_alpha_fifteen">#26ffffff</color>
+
+    <color name="add_download_info_background">#373d41</color>
+    <color name="delete_download_info_background">#373d41</color>
+    <color name="alivc_color_player_list_item_press">#2d3342</color>
+
+    <color name="alivc_color_action_list_dialog_background">#1e2321</color>
+    <color name="alivc_color_gray">#D8D8D8</color>
+    <color name="alivc_dialog_bg_translucent">#E6373d41</color>
+    <color name="alivc_barrage_switch_background">#80D8D8D8</color>
+
+
+</resources>

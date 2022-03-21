@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>上传图片测试</title>
+</head>
+<body>
+<br/></br>
+<button onclick="javaScript:qr.openUploadImg('uploadImgBack')">上传图片</button>
+<br/></br>
+<div id="uploadimgDiv">
+
+
+</div>
+
+
+
+</body>
+<script>
+function uploadImgBack(data){
+    uploadimgDiv.innerHTML="";
+    var str=new Array();
+    str=data.split(";");
+    var imgHtml="";
+    for(i=0;i<str.length;i++){
+        imgHtml=imgHtml+'<img id="upimg" src="'+str[i]+'" width="100%" height="50%"/><br/>';
+
+    }
+    uploadimgDiv.innerHTML=imgHtml;
+
+}
+</script>
+
+</html>

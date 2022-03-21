@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>共享擦鞋首页</title>
+
+</head>
+<body>
+
+    <h2>列表操作</h2>
+    <button onclick="tttt()">测试javascript</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.openWin('http://hybrid.1000rui.cn/web/page/faxian.html','测试列表1')">测试列表1</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.openWin('https://suning.m.tmall.com/shop/shop_auction_search.htm?spm=a1z60.7754813.0.0.7e8e4128AYekA1&suid=2616970884&sort=default')">测试列表2</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.openWin('https://m.baidu.com')">打开百度</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.openWin('http://my.tt.com','测试错误页面')">测试错误页面</button>
+    <br/><br/>
+
+    <button onclick="javaScript:qr.openWin('http://m.diaoyu.com/share/thread-3205728.html')">打开钓鱼人详情页</button>
+    <br/><br/>
+
+
+    <h2>表单操作</h2>
+
+    <button onclick="javaScript:qr.openDataPicker('Y-M-D','choseData')">选择日期</button>
+    <br/></br>
+    <button onclick="javaScript:qr.openOptionPicker(2,['A','B','C','D','E','F','G'],'choseOptionPicker')">自定义选择项</button>
+    <br/></br>
+    <button onclick="javaScript:qr.openActionSheet(['选项一','选项二','选项三','选项N'],'choseActionSheetBack')">ActionSheet选择</button>
+    <br/></br>
+    <button onclick="javaScript:qr.openAreaPicker('all',['湖北省','武汉市','武昌区'],'choseAreaBack')">选择区域</button>
+    <br/></br>
+
+    <button onclick="javaScript:qr.openFilePicker('choseFileBack')">选择文件</button>&nbsp;&nbsp;<button onclick="javaScript:qr.openDirPicker('choseDirBack')">选择目录</button>
+    <br/></br>
+    <button onclick="javaScript:qr.openWin('/upimg.html')">上传图片</button>
+    <br/><br/>
+
+    <h2>窗口操作</h2>
+
+    <button onclick="javaScript:qr.openWin('/test.html','新窗口')">打开新窗口</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.openLoginWin()">打开登录窗口</button>
+    <br/><br/>
+
+    <h2>提示框</h2>
+    <button onclick="javaScript:qr.alert('提示标题','提示内容')">弹出提示</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.alert('提示标题','提示内容','queding()')">确定和取消</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.tips('我是Tips提示')">Tips提示</button>
+    <br><br/>
+    <button onclick="javaScript:qr.openLoading('')">Loading1</button>
+    <br><br/>
+    <button onclick="javaScript:qr.alertLoading('加载中，请稍后...')">Loading2</button>
+    <br><br/>
+    <h2>导航栏操作</h2>
+    <button onclick="addRightTxt()">添加右上角按钮</button>
+    <br/><br/>
+    <button onclick="addRightImg()">添加右上角图片</button>
+    <br/><br/>
+
+    <button onclick="javaScript:qr.hideRightBtn()">隐藏右上角按钮</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.hideLeftBtn()">隐藏左上角按钮</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.showLeftBtn()">显示左上角按钮</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.showNavgBar()">显示导航栏</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.hideNavgBar()">隐藏导航栏</button>
+    <br/><br/>
+    <!--<button onclick="javaScript:qr.showNavgBarBgColor('#FF0000')">设置导航栏颜色</button>-->
+    <!--<br/><br/>-->
+    <h2>其他操作</h2>
+    <button onclick="isNetW()">是否有网络</button>
+    <br/><br/>
+    <button onclick="javaScript:qr.setParams('a','测试缓存内容')">设置自定义缓存</button>
+    <br/><br/>
+    <button onclick="gethcun()">获取自定义缓存</button>
+    <br/><br/>
+    <button onclick="opensm()">打开扫码</button>
+    <br/><br/>
+    <button onclick="gd()">高德地图定位</button>
+    <br/><br/>
+    <input type="text"/>
+    <br/><br/>
+
+</body>
+<script src="qrapp.js"> </script>
+<script>
+
+//var dsBridge=require("dsbridge");
+
+function tttt(){
+    alert('a');
+    qr.openWin('http://www.baidu.com','');
+    //var vv=dsBridge.call("testSyn","testSyn");
+
+
+    //var str=dsBridge.call("testSyn","testSyn");
+}
+
+
+
+function choseActionSheetBack(index,itemName){
+    alert("选择:"+index+" "+itemName);
+}
+
+function choseFileBack(curl){
+    alert("文件路径："+curl);
+}
+
+function choseDirBack(curl){
+    alert("目录："+curl);
+}
+
+
+function gd(){
+    qr.openLocation('dingweirs');
+}
+
+function dingweirs(j,w,addrss){
+    alert('经度:'+j+" 纬度:"+w+" 详细地址:"+addrss);
+}
+
+function opensm(){
+    qr.openScan('smhuidao');
+}
+
+function smhuidao(a,add){
+    qr.tips('扫码结果:'+add);
+}
+
+
+
+function gethcun(){
+    var v=qr.getParams('a');
+    qr.tips('缓存内容：'+v);
+}
+
+function isNetW(){
+    var b=qr.isNetWork();
+    qr.tips('是否有网络：'+b);
+}
+
+
+function addRightTxt(){
+    qr.showRightTextBtn("提交","tijiao1()");
+}
+function addRightImg(){
+    qr.showRightImgBtn("http://img.gxdaojia.com/wxapp/images/sy6.png","tijiao2()");
+}
+
+function tijiao1(){
+    qr.tips('点击了提交');
+}
+function tijiao2(){
+    qr.tips('点击了图片提交');
+}
+
+function huidiao(id,p1,p2,pn){
+    qr.tips("ID:"+id+" 参数1:"+p1+" 参数2:"+p2+" 参数N:"+pn);
+}
+
+function queding(){
+    qr.tips('点击了确定');
+}
+
+function choseData(y,h,min){
+    alert(y+"年"+h+"月"+min+"日");
+}
+
+function choseOptionPicker(index,item){
+    alert(index+" "+item);
+}
+
+function choseAreaBack(shen,shi,qu){
+    alert(shen+''+shi+''+qu);
+}
+
+</script>
+
+</html>

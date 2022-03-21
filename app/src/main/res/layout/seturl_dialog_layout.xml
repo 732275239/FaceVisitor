@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp">
+
+    <EditText
+        android:id="@+id/ip"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edit"
+        android:gravity="center"
+        android:hint="请输入ip"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/code"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit"
+        android:gravity="center"
+        android:hint="请输入端口"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="19sp" />
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="50dp">
+
+        <RadioButton
+            android:id="@+id/in"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:text="进入" />
+
+        <RadioButton
+            android:id="@+id/out"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="外出" />
+
+    </RadioGroup>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#EBEBEB" />
+
+    <TextView
+        android:id="@+id/okBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="确认"
+        android:textColor="#0076FF"
+        android:textSize="19sp" />
+</LinearLayout>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<com.airbnb.lottie.LottieAnimationView-->
+        <!--android:id="@+id/lottieview"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:lottie_autoPlay="true"-->
+        <!--app:lottie_fileName="lottie/bgview.json"-->
+        <!--app:lottie_loop="true" />-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <LinearLayout style="@style/MatchMatch.Vertical">
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottie1"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="lottie/thirsty.json"
+                        app:lottie_loop="true" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottie2"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="lottie/loading1.json"
+                        app:lottie_loop="true" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottie3"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="lottie/loading2.json"
+                        app:lottie_loop="true" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/MatchMatch.Vertical">
+
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading3.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading4.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading5.json"
+                            app:lottie_loop="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading10.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="viewhelper/empty_box.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/touch_id.json"
+                            app:lottie_loop="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/countdown.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/zhiwen.json"
+                            app:lottie_loop="true" />
+
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading6.json"
+                            app:lottie_loop="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading7.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading8.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading9.json"
+                            app:lottie_loop="true" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading11.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading12.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading13.json"
+                            app:lottie_loop="true" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="lottie/loading14.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="placeholder/placeholder1.json"
+                            app:lottie_loop="true" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="placeholder/placeholder2.json"
+                            app:lottie_loop="true" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="placeholder/placeholder3.json"
+                            app:lottie_loop="true" />
+
+                    </LinearLayout>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="placeholder/placeholder4.json"
+                        app:lottie_loop="true" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+</LinearLayout>
