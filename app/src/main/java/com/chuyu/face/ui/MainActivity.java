@@ -23,6 +23,7 @@ import android.view.animation.RotateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextClock;
 
@@ -42,6 +43,7 @@ import com.chuyu.face.tools.EventBus.EventCenter;
 import com.chuyu.face.tools.Tools;
 import com.chuyu.face.tools.ZKLiveFaceManager;
 import com.chuyu.face.tools.share.SharedPreferencesUtils;
+import com.chuyu.face.utils.FaceDetectorUtils;
 import com.chuyu.face.utils.FileUtil;
 import com.chuyu.face.utils.GsonUtil;
 import com.chuyu.face.utils.Nv21ToBitmapUtils;
@@ -101,7 +103,9 @@ public class MainActivity extends BaseActivity {
     private Bitmap mBitmap;
     private TextClock time;
     private View adminbt;
-    private int current = 11;
+    private ImageView landscape;
+    private int current = 11;//登录页面控制
+    private int showlandscape = 12;//屏保控制
     private int inOrOut; // 1进 2出
     private int minScore;
     private SoundPool spPool;
@@ -113,7 +117,7 @@ public class MainActivity extends BaseActivity {
     private int minute2;
 
     public static ExecutorService newSingleThreadExecutor() {
-        return new ThreadPoolExecutor(2, 3,
+        return new ThreadPoolExecutor(4, 4,
                 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>());
     }
@@ -129,16 +133,19 @@ public class MainActivity extends BaseActivity {
         facelayout = findViewById(R.id.facelayout);
         adminbt = (View) findViewById(R.id.adminbt);
         adminLayout = findViewById(R.id.adminLayout);
+        landscape = findViewById(R.id.landscape);
         pass = findViewById(R.id.pass);
         login = findViewById(R.id.login);
         cancel = findViewById(R.id.cancel);
         login.setOnClickListener(this);
         cancel.setOnClickListener(this);
         adminbt.setOnClickListener(this);
+        landscape.setOnClickListener(this);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/digital.ttf");
         time.setTypeface(typeface);
         PgyCrashManager.register();
 //        PgyCrashManager.setIsIgnoreDefaultHander(true);
+        showlandscape();
     }
 
     @Override
@@ -161,16 +168,16 @@ public class MainActivity extends BaseActivity {
             faceDetectView.initCamera();
             faceDetectView.getDetectConfig().CameraType = 0;
             faceDetectView.getDetectConfig().EnableFaceDetect = true;
-            faceDetectView.getDetectConfig().Simple = 0.3f;//图片检测时的压缩取样率，0~1，越小检测越流畅
-            faceDetectView.getDetectConfig().MinDetectTime = 200;
-            faceDetectView.getDetectConfig().MaxDetectTime = 800;//进入智能休眠检测，以0.8秒一次的这个速度检测
+            faceDetectView.getDetectConfig().Simple = 0.2f;//图片检测时的压缩取样率，0~1，越小检测越流畅
+            faceDetectView.getDetectConfig().MinDetectTime = 300;
+            faceDetectView.getDetectConfig().MaxDetectTime = 600;//进入智能休眠检测，以0.8秒一次的这个速度检测
             faceDetectView.getDetectConfig().EnableIdleSleepOption = true;//启用智能休眠检测机制
             faceDetectView.getDetectConfig().IdleSleepOptionJudgeTime = 1000 * 10;//10秒内没有检测到人脸，进入智能休眠检测
         }
         faceDetectView.startCameraPreview();
         faceDetectView.setOnstart(b -> {
-            Log.e("log", b?"成功":"失败");
-            if (!b){
+            Log.e("log", b ? "成功" : "失败");
+            if (!b) {
                 finish();
             }
         });
@@ -182,10 +189,11 @@ public class MainActivity extends BaseActivity {
         faceDetectView.setFramePreViewListener((datas, width, height) -> {
             if (datas != null && allow) {
                 startMonitor();
-                extractFaces(datas, width, height);
+                executorService.execute(() -> extractFaces(datas, width, height));
             }
         });
         faceDetectView.setFlashListener(() -> {
+            runOnUiThread(() -> showlandscape());
             if (!isLedOn) {
                 try {
                     if (zkDevice.setLED(1)) {
@@ -198,7 +206,7 @@ public class MainActivity extends BaseActivity {
                             } catch (SdkException e) {
                                 e.printStackTrace();
                             }
-                        },5000);
+                        }, 5000);
                     }
                 } catch (SdkException e) {
                     e.printStackTrace();
@@ -213,42 +221,61 @@ public class MainActivity extends BaseActivity {
     }
 
     private void extractFaces(byte[] datas, int width, int height) {
-        runOnUiThread(() -> {
 //          mface = ZKLiveFaceManager.getInstance().getTemplateFromNV21(datas, width, height);
-            facepath = convertPicture(datas, width, height);
-            byte[]  mface = ZKLiveFaceManager.getInstance().getTemplateFromBitmap(mBitmap);
-            if (mface != null) {
-                String id = ZKLiveFaceManager.getInstance().identify(mface, minScore);
-                if (id == null || id.isEmpty()) {
-                    //人脸未登记 (访客)
-                    UploadFile(facepath, 1, null);
-//                        if (inOrOut == 1) {
-//                            failMonitor("访客请扫二维码");
-//                            showToast("访客请扫二维码", 0);
-//                        } else {
-                    failMonitor("请联系门岗开门");
-//                        }
-                } else {
-                    //人脸已登记
-                    List<FaceData> faceDatas = BlogDao.getBlogItemBox().query().equal(FaceData_.idno, id).build().find();
-                    if (faceDatas != null && faceDatas.size() > 0) {
-                        FaceData faceData = faceDatas.get(0);
-                        OpenDoor(faceData.getName());
-                        UploadFile(facepath, 2, faceData);
-                        faceDatas.clear();
-                    } else {
-                        failMonitor("人脸失效");
-                    }
-                }
+        facepath = convertPicture(datas, width, height);
+        byte[] mface = ZKLiveFaceManager.getInstance().getTemplateFromBitmap(mBitmap);
+        if (mface != null) {
+            String id = ZKLiveFaceManager.getInstance().identify(mface, minScore);
+            if (id == null || id.isEmpty()) {
+                //人脸未登记 (访客)
+                visitorHandle();
             } else {
-                stopMonitor();
+                //人脸已登记
+                List<FaceData> faceDatas = BlogDao.getBlogItemBox().query().equal(FaceData_.idno, id).build().find();
+                if (faceDatas != null && faceDatas.size() > 0) {
+                    FaceData faceData = faceDatas.get(0);
+                    OpenDoor(faceData.getName());
+                    UploadFile(facepath, 2, faceData);
+                    faceDatas.clear();
+                } else {
+                    failMonitor("人脸失效");
+                }
             }
-        });
+        } else {
+            stopMonitor();
+        }
+    }
+
+    //人脸未登记 (访客)
+    private void visitorHandle() {
+        if (inOrOut == 1) {
+            //进
+            boolean visIn = (boolean) SharedPreferencesUtils.getParam(this, "visitorIn", false);
+            if (visIn) {
+                OpenDoor("临时访客");
+                UploadFile(facepath, 1, null);
+            } else {
+                failMonitor("请联系门岗开门");
+            }
+
+        } else {
+            //出
+            boolean visOut = (boolean) SharedPreferencesUtils.getParam(this, "visitorOut", false);
+            if (visOut) {
+                OpenDoor("临时访客");
+                UploadFile(facepath, 1, null);
+            } else {
+                failMonitor("请联系门岗开门");
+            }
+        }
+
     }
 
     private void OpenDoor(String s) {
-        completeMonitor(s);
-        openDoor();
+        runOnUiThread(() -> {
+            completeMonitor(s);
+            openDoor();
+        });
     }
 
     private void UploadFile(String facepath, int i, FaceData face) {
@@ -342,8 +369,7 @@ public class MainActivity extends BaseActivity {
                         adminLayout.setVisibility(View.VISIBLE);
                         allow = false;
                         handler.removeMessages(current);
-                        Message msg = handler.obtainMessage(current);
-                        handler.sendMessageDelayed(msg, 15000);
+                        handler.sendMessageDelayed(handler.obtainMessage(current), 15000);
                     }
                     return;
                 }
@@ -356,8 +382,12 @@ public class MainActivity extends BaseActivity {
             case R.id.login:
                 login();
                 break;
+            case R.id.landscape:
+                showlandscape();
+                break;
             case R.id.cancel:
                 if (adminLayout.getVisibility() == View.VISIBLE) {
+                    handler.removeMessages(current);
                     adminLayout.setVisibility(View.GONE);
                     allow = true;
                     pass.setText("");
@@ -371,15 +401,29 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void handleMessage(Message msg) {
         switch (msg.what) {
-            case 11://10秒无操作，自动隐藏
+            case 11://隐藏登录页面
                 adminLayout.setVisibility(View.GONE);
                 allow = true;
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(pass.getWindowToken(), 0);
                 break;
+            case 12://显示屏保
+                if (allow) {
+                    landscape.setVisibility(View.VISIBLE);
+                } else {
+                    showlandscape();
+                }
+                break;
+
             default:
                 break;
         }
+    }
+
+    private void showlandscape() {
+        landscape.setVisibility(View.GONE);
+        handler.removeMessages(showlandscape);
+        handler.sendMessageDelayed(handler.obtainMessage(showlandscape), 20000);
     }
 
     /**
@@ -505,54 +549,11 @@ public class MainActivity extends BaseActivity {
         }, 2000);
     }
 
-    private String convertPicture(byte[] s, int w, int h) {
-        try {
-            /**
-             * Nv21ToBitmapUtils 转换处理的bitmap是 RGBA_8888  需要转为RGB_565进行人脸裁剪
-             */
-            Bitmap bitmap = Nv21ToBitmapUtils.getInstance().nv21ToBitmap(s, w, h);
-            //旋转90度
-            mBitmap = adjustPhotoRotation(bitmap, 90);
-            if (mBitmap != null) {
-                //先保存为图片文件，再转为bitmap
-//                mBitmap = FaceDetectorUtils.getInstance().getCutBitmap(mBitmap);
-                return FileUtil.saveBitmap(mBitmap, "/face.jpg");
-            } else {
-                return null;
-            }
-        } catch (Exception ex) {
-        }
-        return null;
-    }
-
-    /**
-     * 旋转bitmap角度
-     *
-     * @param bm
-     * @param orientationDegree
-     * @return
-     */
-    Bitmap adjustPhotoRotation(Bitmap bm, final int orientationDegree) {
-        Matrix m = new Matrix();
-        m.setRotate(orientationDegree, (float) bm.getWidth() / 2, (float) bm.getHeight() / 2);
-        try {
-            Bitmap bm1 = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(), bm.getHeight(), m, true);
-            return bm1;
-        } catch (OutOfMemoryError ex) {
-        }
-        return null;
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
         if (faceDetectView != null) {
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startDetect();
-                }
-            }, 2000);
+            handler.postDelayed(() -> startDetect(), 2000);
             Log.e("abc", "onResume");
         }
     }
@@ -622,6 +623,37 @@ public class MainActivity extends BaseActivity {
         minute1 = (int) SharedPreferencesUtils.getParam(mContext, "minute1", 0);
         hour2 = (int) SharedPreferencesUtils.getParam(mContext, "hour2", 8);
         minute2 = (int) SharedPreferencesUtils.getParam(mContext, "minute2", 0);
+    }
+
+    private String convertPicture(byte[] s, int w, int h) {
+        try {
+            /**
+             * Nv21ToBitmapUtils 转换处理的bitmap是 RGBA_8888  需要转为RGB_565进行人脸裁剪
+             */
+            Bitmap bitmap = Nv21ToBitmapUtils.getInstance().nv21ToBitmap(s, w, h);
+            //旋转90度
+            mBitmap = adjustPhotoRotation(bitmap, 90);
+            if (mBitmap != null) {
+                //先保存为图片文件，再转为bitmap
+                mBitmap = FaceDetectorUtils.getInstance().getCutBitmap(mBitmap);
+                return FileUtil.saveBitmap(mBitmap, "/face.jpg");
+            } else {
+                return null;
+            }
+        } catch (Exception ex) {
+        }
+        return null;
+    }
+
+    private Bitmap adjustPhotoRotation(Bitmap bm, final int orientationDegree) {
+        Matrix m = new Matrix();
+        m.setRotate(orientationDegree, (float) bm.getWidth() / 2, (float) bm.getHeight() / 2);
+        try {
+            Bitmap bm1 = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(), bm.getHeight(), m, true);
+            return bm1;
+        } catch (OutOfMemoryError ex) {
+        }
+        return null;
     }
 
     class TimeChangeReceiver extends BroadcastReceiver {

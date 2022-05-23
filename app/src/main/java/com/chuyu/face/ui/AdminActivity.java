@@ -2,15 +2,14 @@ package com.chuyu.face.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v7.widget.SwitchCompat;
 import android.text.InputType;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,18 +52,18 @@ public class AdminActivity extends BaseActivity {
 
     private ImageView topBarLeftImg;
     private TextView topBarTitleTv;
-    private LinearLayout modifyIP, outapp, filllight, update,changepassword;
-    private SwitchCompat visitorIn, visitorOut;
+    private LinearLayout modifyIP, outapp, filllight, update, changepassword;
+    private Switch visitorIn, visitorOut;
     private BubbleSeekBar similarity;
     private ExecutorService executorService;
 
     @Override
     protected void initView() {
-        boolean visIn = (boolean) SharedPreferencesUtils.getParam(this, "visitorIn", true);
-        boolean visOut = (boolean) SharedPreferencesUtils.getParam(this, "visitorOut", true);
+        boolean visIn = (boolean) SharedPreferencesUtils.getParam(this, "visitorIn", false);
+        boolean visOut = (boolean) SharedPreferencesUtils.getParam(this, "visitorOut", false);
         int minScore = (int) SharedPreferencesUtils.getParam(this, "minScore", 76);
-        topBarLeftImg = (ImageView) findViewById(R.id.top_bar_leftImg);
-        topBarTitleTv = (TextView) findViewById(R.id.top_bar_titleTv);
+        topBarLeftImg = findViewById(R.id.top_bar_leftImg);
+        topBarTitleTv = findViewById(R.id.top_bar_titleTv);
         topBarTitleTv.setText("管理员设置");
         topBarLeftImg.setOnClickListener(this);
         update = findViewById(R.id.update);
@@ -91,7 +90,6 @@ public class AdminActivity extends BaseActivity {
 
             @Override
             public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
-
             }
 
             @Override
@@ -182,20 +180,15 @@ public class AdminActivity extends BaseActivity {
                 getHumanFace();
                 break;
             case R.id.changepassword:
-
                 InputDialog.show(AdminActivity.this, "修改密码", "请输入6位数字密码", "确定", "取消")
                         .setInputInfo(new InputInfo()
                                 .setMAX_LENGTH(6)
                                 .setInputType(InputType.TYPE_CLASS_NUMBER)
                         )
-                        .setOnOkButtonClickListener(new OnInputDialogButtonClickListener() {
-                            @Override
-                            public boolean onClick(BaseDialog baseDialog, View v, String inputStr) {
-                                SharedPreferencesUtils.setParam(mContext, "password", inputStr);
-                                return false;
-                            }
+                        .setOnOkButtonClickListener((baseDialog, v1, inputStr) -> {
+                            SharedPreferencesUtils.setParam(mContext, "password", inputStr);
+                            return false;
                         });
-
                 break;
             case R.id.outapp:
                 ZKLiveFaceManager.getInstance().del();
@@ -208,6 +201,7 @@ public class AdminActivity extends BaseActivity {
                 break;
         }
     }
+
 
     private ProgressDialog progressDialog;
     private int number = 1;
@@ -242,7 +236,6 @@ public class AdminActivity extends BaseActivity {
         }
     }
 
-    private byte[] template;
 
     private void getHumanFace() {
         OkHttp.postArray(this, true, URLs.listUserFace, "",
@@ -269,8 +262,7 @@ public class AdminActivity extends BaseActivity {
                                 @Override
                                 public void run() {
                                     for (faces face : rsData) {
-                                        template = null;
-                                        template = ZKLiveFaceManager.getInstance().getTemplateFromBitmap(Base64_Utils.base64ToBitmap(face.getImgData()));
+                                        byte[] template = ZKLiveFaceManager.getInstance().getTemplateFromBitmap(Base64_Utils.base64ToBitmap(face.getImgData()));
                                         if (template != null) {
                                             FaceData user = new FaceData();
                                             user.setName(face.getName());
@@ -278,7 +270,6 @@ public class AdminActivity extends BaseActivity {
                                             user.setIdno(face.getUserId());
                                             BlogDao.insertOrUpdateBlogItem(user);
                                             ZKLiveFaceManager.getInstance().dbAdd(face.getUserId(), template);
-                                            template = null;
                                             Message msg = handler.obtainMessage(number);
                                             Bundle bundle = new Bundle();
                                             bundle.putString("size", rsData.size() + "");

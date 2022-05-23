@@ -53,6 +53,7 @@ android {
             }
     }
 
+
 }
 
 
@@ -63,7 +64,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     implementation 'com.kongzue.dialog_v3:dialog:3.2.4'
     api 'com.github.GrenderG:Toasty:1.4.2'
     implementation 'com.xw.repo:bubbleseekbar:3.20-lite'
@@ -75,7 +75,6 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.airbnb.android:lottie:2.3.1'
-    //鲁班压缩
     implementation 'top.zibin:Luban:1.1.8'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'de.greenrobot:eventbus:2.4.0'
@@ -86,12 +85,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.0.1'
     implementation 'org.xutils:xutils:3.3.36'
     implementation 'com.github.bumptech.glide:glide:4.0.0'
-//    implementation 'com.google.zxing:core:3.2.1'
-//    implementation 'com.journeyapps:zxing-android-embedded:3.5.0@aar'
     implementation 'com.baoyz.actionsheet:library:1.1.7'
     implementation 'com.alibaba:fastjson:1.1.55.android'
     implementation 'com.github.wendux:DSBridge-Android:3.0-SNAPSHOT'
-//    implementation 'com.aliyun.dpa:oss-android-sdk:2.4.5'
     implementation 'com.pgyersdk:sdk:3.0.10'
     implementation 'com.github.whieenz:LogCook:v1.0'
     implementation files('libs/ZKLiveFaceService5.6.jar')

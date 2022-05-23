@@ -139,6 +139,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     /**
      * Handler回调方法
      * 防止内存泄露
+     *
      * @param msg
      */
     protected void handleMessage(Message msg) {
@@ -209,11 +210,13 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     public void showToast(String s, int status) {
-        if (status == 1) {
-            Toasty.success(mContext, s, Toast.LENGTH_SHORT, false).show();
-        } else {
-            Toasty.error(mContext, s, Toast.LENGTH_SHORT, false).show();
-        }
+        runOnUiThread(() -> {
+            if (status == 1) {
+                Toasty.success(mContext, s, Toast.LENGTH_SHORT, false).show();
+            } else {
+                Toasty.error(mContext, s, Toast.LENGTH_SHORT, false).show();
+            }
+        });
     }
 
     @Override

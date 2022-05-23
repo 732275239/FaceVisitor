@@ -42,6 +42,7 @@
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+
     <application
         android:name="com.chuyu.face.base.ApplicationContext"
         android:allowBackup="true"
@@ -71,8 +72,9 @@
         <activity
             android:name="com.chuyu.face.ui.MainActivity"
             android:launchMode="singleTask" />
-        <activity android:name="com.pgyersdk.feedback.FeedbackActivity" />
+
         <activity android:name="com.chuyu.face.ui.AdminActivity" />
+
         <activity android:name="com.chuyu.face.ui.LightTimeActivity" />
 
         <provider
@@ -99,7 +101,7 @@
 
         <meta-data
             android:name="PGYER_APPID"
-            android:value="22cad8acef0164af2d29a360adf7c8a4"></meta-data>
+            android:value="22cad8acef0164af2d29a360adf7c8a4"/>
 
     </application>
 

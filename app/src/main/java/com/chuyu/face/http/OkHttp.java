@@ -92,7 +92,6 @@ public class OkHttp {
 
     public static <T> void postFile(final Context context, String URL,
                                     File file, final OkHttpCallBack<T> callback) {
-
         String token = "5d46cb8f9c89e0c85901be97fb446e4a7652510d";
         Log.i("http", "请求接口: " + URLs.HOST_URL + URL);
         Log.i("http", "token: " + token);

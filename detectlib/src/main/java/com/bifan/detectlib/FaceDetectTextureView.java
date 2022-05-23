@@ -3,6 +3,7 @@ package com.bifan.detectlib;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
+import android.graphics.Point;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.media.FaceDetector;
@@ -13,6 +14,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.WindowManager;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -169,6 +171,9 @@ public class FaceDetectTextureView extends TextureView implements View.OnLayoutC
 
 
     private FaceDetector.Face[] detectFace(Bitmap captureBitmap) {
+        if (captureBitmap == null) {
+            return null;
+        }
         FaceDetector mFaceDetector = new FaceDetector(captureBitmap.getWidth(), captureBitmap.getHeight(), getDetectConfig().DETECT_FACE_NUM);
         FaceDetector.Face[] mFace = new FaceDetector.Face[getDetectConfig().DETECT_FACE_NUM];
         int detectedFaceNum = mFaceDetector.findFaces(captureBitmap, mFace);

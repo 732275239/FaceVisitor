@@ -1,2 +1,4 @@
 include ':detectlib'
 include ':app'
+rootProject.name='人脸门岗'
+

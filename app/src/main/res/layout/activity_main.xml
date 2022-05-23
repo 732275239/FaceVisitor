@@ -19,31 +19,6 @@
         android:layout_height="12dp"
         android:background="@drawable/workbench_ic_digital_clock_indicator" />
 
-    <LinearLayout
-        style="@style/WrapWrap.Vertical"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="60dp">
-
-        <TextClock
-            android:id="@+id/time"
-            style="@style/WrapWrap"
-            android:format12Hour="HH:mm:ss"
-            android:format24Hour="HH:mm:ss"
-            android:textColor="#A8EDF8"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <TextClock
-            style="@style/WrapWrap"
-            android:layout_marginTop="10dp"
-            android:format12Hour="yyyy/MM/dd E"
-            android:format24Hour="yyyy/MM/dd E"
-            android:textColor="#A8EDF8"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
     <TextView
         style="@style/WrapWrap"
         android:layout_centerHorizontal="true"
@@ -54,10 +29,6 @@
         android:textColor="#A8EDF8"
         android:textSize="20sp" />
 
-    <View
-        android:id="@+id/adminbt"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
 
     <RelativeLayout
         android:id="@+id/facelayout"
@@ -173,5 +144,49 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <View
+        android:id="@+id/adminbt"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <ImageView
+        android:id="@+id/landscape"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/landscape"/>
+
+    <LinearLayout
+        style="@style/WrapWrap.Vertical"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="60dp">
+
+        <TextClock
+            android:id="@+id/time"
+            style="@style/WrapWrap"
+            android:format12Hour="HH:mm:ss"
+            android:format24Hour="HH:mm:ss"
+            android:shadowColor="#3A3A3A"
+            android:shadowRadius="5"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:textColor="#A8EDF8"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextClock
+            style="@style/WrapWrap"
+            android:layout_marginTop="10dp"
+            android:format12Hour="yyyy-MM-dd E"
+            android:format24Hour="yyyy-MM-dd E"
+            android:shadowColor="#3A3A3A"
+            android:shadowRadius="5"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:textColor="#A8EDF8"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
